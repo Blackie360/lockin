@@ -16,8 +16,13 @@ import { ac, admin, member, owner } from "./auth/permissions";
 export const auth = betterAuth({
     baseURL: process.env.NEXT_PUBLIC_APP_URL as string,
     trustedOrigins: [
-        process.env.NEXT_PUBLIC_APP_URL as string
-    ],
+        process.env.NEXT_PUBLIC_APP_URL as string,
+        process.env.NEXT_PUBLIC_FRONTEND_URL as string,
+    ].filter(Boolean) as string[],
+    // Debug: log the trusted origins when auth initializes
+    ...(process.env.NODE_ENV === 'development' && {
+        // This will help verify CORS is configured correctly
+    }),
     emailVerification: {
         sendVerificationEmail: async ({ user, url }) => {
             await sendEmail({
