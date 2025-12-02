@@ -186,6 +186,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* 80px to account for fixed header */
+  }
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
