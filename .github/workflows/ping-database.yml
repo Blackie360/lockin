@@ -32,5 +32,5 @@ jobs:
       - name: Ping database
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: node scripts/ping-database.js
+        run: pnpm exec tsx scripts/ping-database.ts
 
